@@ -9,7 +9,7 @@ current_url = 'https://zhiyou.smzdm.com/user/info/jsonp_get_current'
 # 签到地址
 checkin_url = 'https://zhiyou.smzdm.com/user/checkin/jsonp_checkin'
 # 用用户名和密码登录后获取Cookie
-userCookie = "**************************************************************"
+userCookie = input()
 headers = {
     'Referer': 'https://www.smzdm.com/',
     'Host': 'zhiyou.smzdm.com',

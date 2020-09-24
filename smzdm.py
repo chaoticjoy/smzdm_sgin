@@ -34,10 +34,14 @@ if data['checkin']['has_checkin']:
     # 通过Server酱发送状态 不需要可以删除
     requests.post(serverChan, data={'text': data['nickname'] + '已经签到过了', 'desp': info})
 else:
-    checkin = req(checkin_url)['data']
-    # print(checkin)
-    info = '%s 目前积分：%s，增加积分：%s，经验值：%s，金币：%s，威望：%s，等级：%s' % (data['nickname'], checkin['point'], checkin['add_point'], checkin['exp'], checkin['gold'], checkin['prestige'], checkin['rank'])
-    print(info)
-    # 通过Server酱发送状态 不需要可以删除
-    requests.post(serverChan, data={'text': data['nickname'] + '签到信息', 'desp': info})
+    checkin1 = req(checkin_url)
+    checkin = checkin1['data']
+    if ~checkin1['error_code']:
+        # print(checkin)
+        info = '%s 目前积分：%s，增加积分：%s，经验值：%s，金币：%s，威望：%s，等级：%s' % (data['nickname'], checkin['point'], checkin['add_point'], checkin['exp'], checkin['gold'], checkin['prestige'], checkin['rank'])
+        print(info)
+        # 通过Server酱发送状态 不需要可以删除
+        requests.post(serverChan, data={'text': data['nickname'] + '签到信息', 'desp': info})
+    else:
+        requests.post(serverChan, data={'text': '签到失败', 'desp': checkin1['error_msg']})
  

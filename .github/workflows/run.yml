@@ -29,4 +29,3 @@ jobs:
         ${{ secrets.SCKEY }}
         ${{ secrets.COOKIE }}
         EOF
-        done
